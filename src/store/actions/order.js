@@ -3,7 +3,7 @@ import axios from '../../axios-orders';
 export const purchaseBurgerSuccess = (id, orderData) => {
     return{
         type: actionTypes.PURCHASE_BURGER_SUCCESS,
-        orderIs: id,
+        orderId: id,
         orderData: orderData
     };
 };
@@ -28,7 +28,7 @@ export const purchaseBurger = (orderData) => {
         axios.post('/orders.json', orderData)
              .then( res => {
                 console.log(res.data);
-                dispatch(purchaseBurgerSuccess(res.data, orderData));
+                dispatch(purchaseBurgerSuccess(res.data.name, orderData));
              }) 
              .catch(error => 
                 dispatch(purchaseBurgerFail(error))
