@@ -7,7 +7,15 @@
     font-weight: bold;
     font-size: 1.2rem;
     overflow: scroll;
+    
 }
+
+/* .child{
+  height: 95%;
+  margin-right: -50px; 
+  padding-right: 50px; 
+  overflow-y: scroll;
+} */
 
 
 @media (min-width: 500px) and (min-height: 400px){

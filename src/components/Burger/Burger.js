@@ -20,9 +20,11 @@ const burger = (props) => {
     console.log(transformedIngredients);
     return (
         <div className={classes.Burger}>
+           
             <BurgerIngredient type="bread-top"/>
             {transformedIngredients}
             <BurgerIngredient type="bread-bottom"/>
+            
         </div>
     );
 };
