@@ -7,7 +7,7 @@ import Button from '../../components/Ui/Button/Button';
 import classes from './Auth.css';
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/Ui/Spinner/Spinner';
-import {updateObject} from '../../shared/utility';
+import {updateObject, checkValidity} from '../../shared/utility';
 
 
 
@@ -53,32 +53,13 @@ class Auth extends Component{
             this.props.onSetAuthRedirectPath();
         }
     }
-    checkValidity (value, rules){
-        let isValid = true;
-        if(!rules){
-            return true;
-        }
-
-        if(rules.required){
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if(rules.minLength){
-            isValid = value.length >= rules.minLength && isValid;
-        }
-
-        if(rules.maxLength){
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-
-        return isValid;
-    }
+    
 
     inputChangedHandler = (event,controlName) =>{
         const updatedControls = updateObject(this.state.controls, {
             [controlName]: updateObject(this.state.controls[controlName], {
                 value: event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
+                valid: checkValidity(event.target.value, this.state.controls[controlName].validation),
                 touched: true
             })
         });
